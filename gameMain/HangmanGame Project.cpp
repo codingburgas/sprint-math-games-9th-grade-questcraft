@@ -11,6 +11,16 @@ void displayedWord(const vector<char>& guessed)
 	cout << endl;
 }
 
+bool wordIsGuessed(const vector<char>& guessed)
+{
+	for (char c : guessed)
+	{
+		if (c == '_')
+			return false;
+	}
+	return true;
+}
+
 int main()
 {
     cout << "Welcome to Hangman!" << endl;
@@ -25,7 +35,7 @@ int main()
 	while (lives > 0) 
 	{
 		char guess;
-		count << "Enter your guess: ";
+		cout << "Enter your guess: ";
 		cin >> guess;
 
 		bool correct = false;
@@ -44,7 +54,20 @@ int main()
 		cout << "Wrong Guessed! Lives remain: " << lives << endl;
 	}
 	displayedWord(guessed);
+	
+		if (wordIsGuessed(guessed))
+		{
+			cout << "Congratulations! You've guessed the word: " << secretWord << endl;
+			break;
+		}
 	}
+		
+		if (!wordIsGuessed(guessed))
+		{
+			cout << "Game Over! The secret word was: " << secretWord << endl;
+		}
+	
 	return 0;
 }
+
 
