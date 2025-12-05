@@ -73,7 +73,7 @@ int main()
 		cout << "The secret word has " << secretWord.length() << " letters." << endl;
 		displayedWord(guessed);
 
-		while (lives > 0) 
+		while (lives != 0) 
 		{
 			char guess;
 			cout << "Enter your guess: ";
@@ -91,8 +91,13 @@ int main()
 
 		if (!correct) 
 		{
-			lives--;
-			cout << "Wrong Guessed! Lives remain: " << lives << endl;
+			if (lives == -1) {
+				cout << "Wrong Guess! Lives remain: infinite lives" << endl;
+			} else
+			{
+				lives--;
+				cout << "Wrong Guess! Lives remain: " << lives << endl;
+			}
 		}
 		displayedWord(guessed);
 		
