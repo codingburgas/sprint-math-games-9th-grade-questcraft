@@ -38,10 +38,37 @@ int main()
 
 	if (choice == 1) {
   	  cout << "Welcome to Hangman!" << endl;
-		string secretWord = "computer";
-		vector<char> guessed(secretWord.length(), '_');
 
-		int lives = 5;
+	  int difficulty;
+	  int lives;
+	  string secretWord = "computer";
+	  vector<char> guessed(secretWord.length(), '_');
+
+	
+	  while (true) {
+		  cout << "Choose difficulty level:" << endl;
+		  cout << "1. Easy (infinite lives)" << endl;
+		  cout << "2. Medium (5 lives)" << endl;
+		  cout << "3. Hard (3 lives)" << endl;
+		  cout << "Enter choice: ";
+		  cin >> difficulty;
+
+		  if (difficulty == 1) {
+			  lives = -1;
+			  break;
+		  }
+		  else if (difficulty == 2) {
+			  lives = 5;
+			  break;
+		  }
+		  else if (difficulty == 3) {
+			  lives = 3;
+			  break;
+		  }
+		  else {
+			  cout << "Invalid level! Please choose again." << endl;
+		  }
+	  }
 
 		cout << "The secret word has " << secretWord.length() << " letters." << endl;
 		displayedWord(guessed);
